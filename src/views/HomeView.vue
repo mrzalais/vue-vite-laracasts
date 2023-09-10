@@ -1,13 +1,22 @@
 <script setup>
-import { useStorage } from "@/composables/useStorage";
+function onTabPress(event) {
+  let textarea = event.target
 
-let food = useStorage('food');
+  let val = textarea.value,
+      start = textarea.selectionStart,
+      end = textarea.selectionEnd
+
+  textarea.value = val.substring(0, start) + "\t" + val.substring(end)
+
+  textarea.selectionStart = textarea.selectionEnd = start + 1
+}
+
 </script>
 
 <template>
   <main>
-    <p>
-      What is your favorite food? <input type="text" v-model="food">
-    </p>
+    <form>
+      <textarea ref="textarea" @keydown.tab.prevent="onTabPress" style="width: 100%; height: 300px;"></textarea>
+    </form>
   </main>
 </template>
