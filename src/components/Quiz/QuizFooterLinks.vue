@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h5>{{ quiz.name }}</h5>
+    <h5>{{ state.name }}</h5>
+
+    <button @click="state.name = 'New name'" class="btn btn-primary">Change name</button>
 
     <ul>
       <li><a href="#">Get a job</a></li>
@@ -10,5 +12,5 @@
 </template>
 
 <script setup>
-defineProps({ quiz: Object })
+import { state } from '@/stores/quizStore.js'
 </script>
