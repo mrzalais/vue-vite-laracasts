@@ -7,11 +7,15 @@
 <template>
   <div v-if="show" class="modal-mask">
     <div class="modal-container">
-      <header>header text</header>
+      <div>
+        <slot>default body</slot>
+      </div>
 
-      <div>main text</div>
-
-      <footer>footer text</footer>
+      <footer class="modal-footer">
+        <slot name="footer">
+          <button @click="$emit('close')">Close</button>
+        </slot>
+      </footer>
     </div>
   </div>
 </template>
@@ -30,5 +34,23 @@
   padding: 1rem;
   width: 80vw;
   max-width: 500px;
+  border-radius: 7px;
+}
+
+.modal-footer {
+  border-top: 1px solid #ddd;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  font-size: .8rem;
+}
+
+.modal-footer button {
+  background: #ddd;
+  padding: .25rem .75rem;
+  border-radius: 20px;
+}
+
+.modal-footer button:hover {
+  background: #ccc;
 }
 </style>
