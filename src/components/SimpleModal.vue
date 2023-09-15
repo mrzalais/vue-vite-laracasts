@@ -5,14 +5,7 @@
 </script>
 
 <template>
-  <Transition
-    enter-from-class="opacity-0"
-    enter-to-class="opacity-100"
-    enter-active-class="transition duration-300"
-    leave-active-class="transition duration-200"
-    leave-from-class="opacity-100"
-    leave-to-class="opacity-0"
-  >
+  <Transition name="modal">
     <div v-if="show" class="modal-mask">
       <div class="modal-container">
         <div>
@@ -61,5 +54,17 @@
 
 .modal-footer button:hover {
   background: #ccc;
+}
+
+.modal-enter-active, .modal-leave-active {
+  transition: opacity 1s;
+}
+
+.modal-enter-from, .modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-to, .modal-leave-from {
+  opacity: 1;
 }
 </style>
